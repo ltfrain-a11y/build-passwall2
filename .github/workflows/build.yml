@@ -19,15 +19,14 @@ jobs:
         run: |
           wget https://downloads.openwrt.org/releases/22.03.5/targets/bcm53xx/generic/openwrt-sdk-22.03.5-bcm53xx-generic_gcc-11.2.0_musl_eabi.Linux-x86_64.tar.xz
           tar xf openwrt-sdk-22.03.5-bcm53xx-generic_gcc-11.2.0_musl_eabi.Linux-x86_64.tar.xz
-          # 确认解压出的目录名
           ls -d openwrt-sdk-*/
 
       - name: 加入 Passwall2 及依赖源
         run: |
           SDK_DIR=$(ls -d openwrt-sdk-*/ | head -n1)
           cd "$SDK_DIR"
-          git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/openwrt-passwall2
-          git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/openwrt-passwall-packages
+          git clone --depth=1 https://github.com/Openwrt-Passwall/openwrt-passwall2.git package/openwrt-passwall2
+          git clone --depth=1 https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git package/openwrt-passwall-packages
 
       - name: 更新 feeds 并生成配置
         run: |
